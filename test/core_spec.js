@@ -56,7 +56,7 @@ describe('application logic', () => {
       const state = fromJS({
         rules: ['rock', 'paper', 'scissor']
       })
-      const playerChoice = 'paper'
+      const playerChoice = 'scissor'
       const computerChoice = 'rock'
 
       const nextState = play(state, playerChoice, computerChoice)
