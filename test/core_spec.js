@@ -52,7 +52,7 @@ describe('application logic', () => {
   })
 
   describe('#play', () => {
-    it('increases the score of winner', () => {
+    it('increases the score for winning choice', () => {
       const state = fromJS({
         rules: ['rock', 'paper', 'scissor']
       })
@@ -71,7 +71,11 @@ describe('application logic', () => {
 
     it('a tie does not increase the score', () => {
       const state = fromJS({
-        rules: ['rock', 'paper', 'scissor']
+        rules: ['rock', 'paper', 'scissor'],
+        score: {
+          player1: 1,
+          player2: 1
+        }
       })
       const playerChoice = 'rock'
       const computerChoice = 'rock'
@@ -79,7 +83,29 @@ describe('application logic', () => {
       const nextState = play(state, playerChoice, computerChoice)
 
       expect(nextState).to.equal(fromJS({
-        rules: ['rock', 'paper', 'scissor']
+        rules: ['rock', 'paper', 'scissor'],
+        score: {
+          player1: 1,
+          player2: 1
+        }
+      }))
+    })
+
+    it('declares winner if a player reaches a score of 2', () => {
+      const state = fromJS({
+        rules: ['rock', 'paper', 'scissor'],
+        score: {
+          player1: 1,
+          player2: 1
+        }
+      })
+      const playerChoice = 'paper'
+      const computerChoice = 'rock'
+
+      const nextState = play(state, playerChoice, computerChoice)
+
+      expect(nextState).to.equal(fromJS({
+        winner: 'player1'
       }))
     })
   })

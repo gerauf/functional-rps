@@ -21,9 +21,12 @@ export function play(state, playerChoice, computerChoice) {
 
   if(!winner) return state
 
-  return state.updateIn(
-    ['score', winner],
-    0,
-    score => score + 1
-  )
+  if(state.getIn(['score', winner],0) + 1 < 2){
+    return state.updateIn(['score', winner], 0, score => score + 1)
+  } else {
+    return state.remove('score')
+                .remove('rules')
+                .set('winner', winner)
+  }
+
 }
