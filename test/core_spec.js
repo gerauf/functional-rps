@@ -1,18 +1,18 @@
 import {Map, fromJS} from 'immutable'
 import {expect} from 'chai';
 
-import {setName, setRules, play} from '../src/core'
+import {setNames, setRules, play} from '../src/core'
 
 
 describe('application logic', () => {
 
-  describe('#setName', () => {
+  describe('#setName()', () => {
     it('adds player names to the state', () => {
       const state = Map()
-      const playerOneName = 'Ryu'
-      const playerTwoName = 'Ken'
+      const player1 = 'Ryu'
+      const player2 = 'Ken'
 
-      const nextState = setName(state, playerOneName, playerTwoName)
+      const nextState = setNames(state, player1, player2)
 
       expect(nextState).to.equal(fromJS({
         names: {
@@ -26,7 +26,7 @@ describe('application logic', () => {
       const state = Map()
       const playerOneName = 'Ryu'
 
-      const nextState = setName(state, playerOneName)
+      const nextState = setNames(state, playerOneName)
 
       expect(nextState).to.equal(fromJS({
         names: {
@@ -38,8 +38,8 @@ describe('application logic', () => {
     })
   });
 
-  describe('#setRules', () => {
-    it('adds the available choices to the state', () => {
+  describe('#setRules()', () => {
+    it('adds the set of available choices to the state', () => {
       const state = Map()
       const rules = ['rock', 'paper', 'scissor']
 
@@ -51,7 +51,7 @@ describe('application logic', () => {
     })
   })
 
-  describe('#play', () => {
+  describe('#play()', () => {
     it('increases the score for winning choice', () => {
       const state = fromJS({
         rules: ['rock', 'paper', 'scissor']

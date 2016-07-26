@@ -2,22 +2,22 @@ import {List} from 'immutable'
 import {getWinner} from './logic'
 
 
-export function setName(state, playerOneName, playerTwoName='Computer') {
+export function setNames(state, player1, player2='Computer') {
   return state.setIn(
     ['names', 'player1'],
-    playerOneName
+    player1
   ).setIn(
     ['names', 'player2'],
-    playerTwoName
+    player2
   )
 }
 
-export function setRules(state, choices) {
-  return state.set('rules', List(choices))
+export function setRules(state, rules) {
+  return state.set('rules', List(rules))
 }
 
-export function play(state, playerChoice, computerChoice) {
-  const winner = getWinner(state.get('rules'), playerChoice, computerChoice)
+export function play(state, player1Choice, player2Choice) {
+  const winner = getWinner(state.get('rules'), player1Choice, player2Choice)
 
   if(!winner) return state
 
