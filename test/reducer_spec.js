@@ -66,4 +66,16 @@ describe('#reducer()', () => {
     }))
   })
 
+  it('has an undefined state', () => {
+    const action = {type: 'SET_NAMES', player1: 'Ham', player2: 'Chicken'}
+
+    const nextState = reducer(undefined, action)
+
+    expect(nextState).to.equal(fromJS({
+      names: {
+        player1: 'Ham',
+        player2: 'Chicken'
+      }
+    }))
+  })
 })
