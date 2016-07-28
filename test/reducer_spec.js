@@ -19,13 +19,29 @@ describe('#reducer()', () => {
   })
 
   it('handles SET_RULES', () => {
-    const initialState = Map()
-    const action = {type: 'SET_RULES', rules: ['R', 'P', 'S']}
+    const initialState = fromJS({
+      availableRules: {
+        names: ['rules1', 'rules2'],
+        weapons: {
+          rules1: [1,2,3],
+          rules2: [4,5,6]
+        }
+      }
+    })
+    const choice = 'rules1'
+    const action = {type: 'SET_RULES', choice: choice}
 
     const nextState = reducer(initialState, action)
 
     expect(nextState).to.equal(fromJS({
-      rules: ['R', 'P', 'S']
+      availableRules: {
+        names: ['rules1', 'rules2'],
+        weapons: {
+          rules1: [1,2,3],
+          rules2: [4,5,6]
+        }
+      },
+      rules: [1, 2, 3]
     }))
 
   })
@@ -47,17 +63,34 @@ describe('#reducer()', () => {
   })
 
   it('can be used with reduce', () => {
+    const initialState = fromJS({
+      availableRules: {
+        names: ['RPS', 'Starwars'],
+        weapons: {
+          RPS: ['Rock', 'Paper', 'Scissor'],
+          Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
+        }
+      }
+    })
+
     const actions = [
       {type: 'SET_NAMES', player1: 'Luke', player2: 'Darth'},
-      {type: 'SET_RULES', rules: ['Lightsabre', 'Force Choke', 'Ewok']},
+      {type: 'SET_RULES', choice: 'Starwars'},
       {type: 'PLAY', player1Choice: 'Lightsabre', player2Choice: 'Force Choke'},
       {type: 'PLAY', player1Choice: 'Force Choke', player2Choice: 'Lightsabre'},
       {type: 'PLAY', player1Choice: 'Ewok', player2Choice: 'Force Choke'},
     ]
 
-    const finalState = actions.reduce(reducer, Map());
+    const finalState = actions.reduce(reducer, initialState);
 
     expect(finalState).to.equal(fromJS({
+      availableRules: {
+        names: ['RPS', 'Starwars'],
+        weapons: {
+          RPS: ['Rock', 'Paper', 'Scissor'],
+          Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
+        }
+      },
       names: {
         player1: 'Luke',
         player2: 'Darth'
@@ -66,12 +99,19 @@ describe('#reducer()', () => {
     }))
   })
 
-  it('has an undefined state', () => {
+  it('has an undefined initial state', () => {
     const action = {type: 'SET_NAMES', player1: 'Ham', player2: 'Chicken'}
 
     const nextState = reducer(undefined, action)
 
     expect(nextState).to.equal(fromJS({
+      availableRules: {
+        names: ['RPS', 'Starwars'],
+        weapons: {
+          rules1: ['Rock', 'Paper', 'Scissor'],
+          rules2: ['Lightsabre', 'Force Choke', 'Ewok']
+        }
+      },
       names: {
         player1: 'Ham',
         player2: 'Chicken'

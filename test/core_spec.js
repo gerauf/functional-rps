@@ -39,14 +39,29 @@ describe('application logic', () => {
   });
 
   describe('#setRules()', () => {
-    it('adds the set of available choices to the state', () => {
-      const state = Map()
-      const rules = ['rock', 'paper', 'scissor']
+    it('sets the rules based on rule set chosen', () => {
+      const state = fromJS({
+        availableRules: {
+          names: ['rules1', 'rules2'],
+          weapons: {
+            rules1: [1,2,3],
+            rules2: [4,5,6]
+          }
+        }
+      })
+      const choice = 'rules1'
 
-      const nextState = setRules(state, rules)
+      const nextState = setRules(state, choice)
 
       expect(nextState).to.equal(fromJS({
-        rules: ['rock', 'paper', 'scissor']
+        availableRules: {
+          names: ['rules1', 'rules2'],
+          weapons: {
+            rules1: [1,2,3],
+            rules2: [4,5,6]
+          }
+        },
+        rules: [1, 2, 3]
       }))
     })
   })
