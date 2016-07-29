@@ -11,9 +11,11 @@ describe('#reducer()', () => {
     const nextState = reducer(initialState, action)
 
     expect(nextState).to.equal(fromJS({
-      names: {
-        player1: 'Darth',
-        player2: 'Luke'
+      player1: {
+        name: 'Darth'
+      },
+      player2: {
+        name: 'Luke'
       }
     }))
   })
@@ -56,8 +58,8 @@ describe('#reducer()', () => {
 
     expect(nextState).to.equal(fromJS({
       rules: ['R', 'P', 'S'],
-      score: {
-        player2: 1
+      player2: {
+        score: 1
       }
     }))
   })
@@ -91,9 +93,11 @@ describe('#reducer()', () => {
           Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
         }
       },
-      names: {
-        player1: 'Luke',
-        player2: 'Darth'
+      player1: {
+        name: 'Luke'
+      },
+      player2: {
+        name: 'Darth'
       },
       winner: 'player1'
     }))
@@ -112,9 +116,11 @@ describe('#reducer()', () => {
           rules2: ['Lightsabre', 'Force Choke', 'Ewok']
         }
       },
-      names: {
-        player1: 'Ham',
-        player2: 'Chicken'
+      player1: {
+        name: 'Ham'
+      },
+      player2: {
+        name: 'Chicken'
       }
     }))
   })

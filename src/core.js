@@ -13,10 +13,10 @@ export const INITIAL_STATE = fromJS({
 
 export function setNames(state, player1, player2='Computer') {
   return state.setIn(
-    ['names', 'player1'],
+    ['player1', 'name'],
     player1
   ).setIn(
-    ['names', 'player2'],
+    ['player2', 'name'],
     player2
   )
 }
@@ -31,10 +31,11 @@ export function play(state, player1Choice, player2Choice) {
 
   if(!winner) return state
 
-  if(state.getIn(['score', winner],0) + 1 < 2){
-    return state.updateIn(['score', winner], 0, score => score + 1)
+  if(state.getIn([winner, 'score'],0) + 1 < 2){
+    return state.updateIn([winner, 'score'], 0, score => score + 1)
   } else {
-    return state.remove('score')
+    return state.removeIn(['player1','score'],'score')
+                .removeIn(['player2','score'],'score')
                 .remove('rules')
                 .set('winner', winner)
   }

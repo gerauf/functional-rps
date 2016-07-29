@@ -32,9 +32,11 @@ describe('store', () => {
           rules2: ['Lightsabre', 'Force Choke', 'Ewok']
         }
       },
-      names: {
-        player1: 'yoda',
-        player2: 'keith'
+      player1: {
+        name: 'yoda'
+      },
+      player2: {
+        name: 'keith'
       }
     }))
   })

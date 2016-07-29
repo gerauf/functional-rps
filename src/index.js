@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Start from './components/Start';
+import Game from './components/Game';
 
-const player1 = "Ehonda"
+// const player1 = "Ehonda"
 const availableRules = ['RPS', 'RPSLS']
+const rules = ['Rock', 'Paper', 'Scissors']
+const player1 = {
+  name: "Luke",
+}
+const player2 = {
+  name: "Darth",
+  score: 1
+}
 
 
 ReactDOM.render(
-  <Start player1={player1}
-         availableRules={availableRules}/>,
+  <Game  rules={rules}
+         player1={player1}
+         player2={player2}
+         />,
   document.getElementById('app')
 )

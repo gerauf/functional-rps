@@ -21,6 +21,8 @@ export default React.createClass({
           <button onClick={() => this.props.setName(this.state.nameEntry)}>
           submit
           </button>
+
+          <h1> Welcome {this.state.nameEntry || '...'} </h1>
       </div>
     )
   }

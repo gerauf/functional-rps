@@ -15,9 +15,11 @@ describe('application logic', () => {
       const nextState = setNames(state, player1, player2)
 
       expect(nextState).to.equal(fromJS({
-        names: {
-          player1: 'Ryu',
-          player2: 'Ken'
+        player1:{
+          name: 'Ryu'
+        },
+        player2:{
+          name: 'Ken'
         }
       }))
     });
@@ -29,9 +31,11 @@ describe('application logic', () => {
       const nextState = setNames(state, playerOneName)
 
       expect(nextState).to.equal(fromJS({
-        names: {
-          player1: 'Ryu',
-          player2: 'Computer'
+        player1:{
+          name: 'Ryu'
+        },
+        player2:{
+          name: 'Computer'
         }
       }))
 
@@ -78,8 +82,8 @@ describe('application logic', () => {
 
       expect(nextState).to.equal(fromJS({
         rules: ['rock', 'paper', 'scissor'],
-        score: {
-          player2: 1
+        player2: {
+          score: 1
         }
       }))
     })
@@ -87,9 +91,8 @@ describe('application logic', () => {
     it('a tie does not increase the score', () => {
       const state = fromJS({
         rules: ['rock', 'paper', 'scissor'],
-        score: {
-          player1: 1,
-          player2: 1
+        player2: {
+          score: 1
         }
       })
       const playerChoice = 'rock'
@@ -99,9 +102,8 @@ describe('application logic', () => {
 
       expect(nextState).to.equal(fromJS({
         rules: ['rock', 'paper', 'scissor'],
-        score: {
-          player1: 1,
-          player2: 1
+        player2: {
+          score: 1
         }
       }))
     })
@@ -109,9 +111,9 @@ describe('application logic', () => {
     it('declares winner if a player reaches a score of 2', () => {
       const state = fromJS({
         rules: ['rock', 'paper', 'scissor'],
-        score: {
-          player1: 1,
-          player2: 1
+        player1: {
+          name: 'Jon',
+          score: 1
         }
       })
       const playerChoice = 'paper'
@@ -120,6 +122,9 @@ describe('application logic', () => {
       const nextState = play(state, playerChoice, computerChoice)
 
       expect(nextState).to.equal(fromJS({
+        player1: {
+          name: 'Jon',
+        },
         winner: 'player1'
       }))
     })
