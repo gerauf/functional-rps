@@ -1,7 +1,7 @@
 import {Map, fromJS} from 'immutable'
 import {expect} from 'chai';
 
-import {setNames, setRules, play} from '../src/core'
+import {setNames, setRules, play, playAgain, changeRules} from '../src/core'
 
 
 describe('application logic', () => {
@@ -122,10 +122,69 @@ describe('application logic', () => {
       const nextState = play(state, playerChoice, computerChoice)
 
       expect(nextState).to.equal(fromJS({
+        rules: ['rock', 'paper', 'scissor'],
         player1: {
           name: 'Jon',
+          score: 2
         },
         winner: 'player1'
+      }))
+    })
+  })
+
+  describe('#playAgain()', () => {
+    it('removes the winner and resets the scores', () => {
+      const state = fromJS({
+        rules: ['rock', 'paper', 'scissor'],
+        player1: {
+          name: 'Jon',
+          score: 2
+        },
+        player2: {
+          name: 'Snow',
+          score: 1
+        },
+        winner: 'player1'
+      })
+
+      const nextState = playAgain(state)
+
+      expect(nextState).to.equal(fromJS({
+        rules: ['rock', 'paper', 'scissor'],
+        player1: {
+          name: 'Jon'
+        },
+        player2: {
+          name: 'Snow'
+        }
+      }))
+    })
+  })
+
+  describe('#newRules()', () => {
+    it('removes the winner, the current rules and resets the scores', () => {
+      const state = fromJS({
+        rules: ['rock', 'paper', 'scissor'],
+        player1: {
+          name: 'Jon',
+          score: 2
+        },
+        player2: {
+          name: 'Snow',
+          score: 1
+        },
+        winner: 'player1'
+      })
+
+      const nextState = changeRules(state)
+
+      expect(nextState).to.equal(fromJS({
+        player1: {
+          name: 'Jon'
+        },
+        player2: {
+          name: 'Snow'
+        }
       }))
     })
   })

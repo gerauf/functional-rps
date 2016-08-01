@@ -1,7 +1,8 @@
 import React from 'react'
 import Start from './Start'
-import Fight from './Fight'
+import Weapons from './Weapons'
 import Player from './Player'
+import Arena from './Arena'
 
 
 export default React.createClass({
@@ -9,11 +10,13 @@ export default React.createClass({
     return(
       <div>
         {this.props.rules ?
-          <div>
+          (<div>
             <Player class={'player1'} player={this.props.player1}/>
             <Player class={'player2'} player={this.props.player2}/>
-            <Fight {...this.props} />
-          </div>
+            <Arena player1 = {this.props.player1}
+                   player2 = {this.props.player2}/>
+            <Weapons {...this.props} />
+          </div>)
           :
           <Start  {...this.props} />}
       </div>

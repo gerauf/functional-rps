@@ -31,13 +31,23 @@ export function play(state, player1Choice, player2Choice) {
 
   if(!winner) return state
 
-  if(state.getIn([winner, 'score'],0) + 1 < 2){
+  state
+
+  if(state.getIn([winner, 'score'],0) + 1 === 2){
     return state.updateIn([winner, 'score'], 0, score => score + 1)
-  } else {
-    return state.removeIn(['player1','score'],'score')
-                .removeIn(['player2','score'],'score')
-                .remove('rules')
                 .set('winner', winner)
+  } else {
+    return state.updateIn([winner, 'score'], 0, score => score + 1)
   }
+}
+
+export function playAgain(state) {
+  return state.removeIn(['player1', 'score'],'score')
+              .removeIn(['player2', 'score'],'score')
+              .remove('winner')
+}
+
+export function changeRules(state) {
+  return playAgain(state).remove('rules')
 
 }

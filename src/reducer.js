@@ -1,5 +1,5 @@
 import {Map} from 'immutable'
-import {setNames, setRules, play, INITIAL_STATE} from './core'
+import {setNames, setRules, play, playAgain, changeRules, INITIAL_STATE} from './core'
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch(action.type) {
@@ -9,6 +9,10 @@ export default function reducer(state = INITIAL_STATE, action) {
       return setRules(state, action.choice)
     case 'PLAY':
       return play(state, action.player1Choice, action.player2Choice)
+    case 'PLAY_AGAIN':
+      return playAgain(state)
+    case 'CHANGE_RULES':
+      return changeRules(state)
   }
   return state
 

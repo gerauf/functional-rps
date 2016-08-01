@@ -7,10 +7,12 @@ const availableRules = ['RPS', 'RPSLS']
 const rules = ['Rock', 'Paper', 'Scissors']
 const player1 = {
   name: "Luke",
+  choice: 'Rock'
 }
 const player2 = {
   name: "Darth",
-  score: 1
+  score: 1,
+  choice: 'Rock'
 }
 
 

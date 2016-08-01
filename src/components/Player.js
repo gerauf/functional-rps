@@ -8,8 +8,8 @@ export default React.createClass({
   render: function() {
     return(
       <div className={this.props.class}>
-        <h4> Player name: {this.props.player.name} </h4>
-        <h6> Player score: {this.getScore()} </h6>
+        <h4 className="player-name"> Player name: {this.props.player.name} </h4>
+        <h6 className="player-score"> Player score: {this.getScore()} </h6>
       </div>
     )
   }

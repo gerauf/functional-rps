@@ -11,12 +11,8 @@ describe('#reducer()', () => {
     const nextState = reducer(initialState, action)
 
     expect(nextState).to.equal(fromJS({
-      player1: {
-        name: 'Darth'
-      },
-      player2: {
-        name: 'Luke'
-      }
+      player1: { name: 'Darth' },
+      player2: { name: 'Luke' }
     }))
   })
 
@@ -58,9 +54,42 @@ describe('#reducer()', () => {
 
     expect(nextState).to.equal(fromJS({
       rules: ['R', 'P', 'S'],
-      player2: {
-        score: 1
-      }
+      player2: { score: 1 }
+    }))
+  })
+
+  it('handles PLAY_AGAIN', () => {
+    const initialState = fromJS({
+      rules: ['rock', 'paper', 'scissor'],
+      player1: { name: 'Jon', score: 2 },
+      player2: { name: 'Snow', score: 1 },
+      winner: 'player1'
+    })
+    const action = {type: 'PLAY_AGAIN'}
+
+    const nextState = reducer(initialState, action)
+
+    expect(nextState).to.equal(fromJS({
+      rules: ['rock', 'paper', 'scissor'],
+      player1: { name: 'Jon' },
+      player2: { name: 'Snow' }
+    }))
+  })
+
+  it('handles CHANGE_RULES', () => {
+    const initialState = fromJS({
+      rules: ['rock', 'paper', 'scissor'],
+      player1: { name: 'Jon', score: 2 },
+      player2: { name: 'Snow', score: 1 },
+      winner: 'player1'
+    })
+    const action = {type: 'CHANGE_RULES'}
+
+    const nextState = reducer(initialState, action)
+
+    expect(nextState).to.equal(fromJS({
+      player1: { name: 'Jon' },
+      player2: { name: 'Snow' }
     }))
   })
 
@@ -79,8 +108,6 @@ describe('#reducer()', () => {
       {type: 'SET_NAMES', player1: 'Luke', player2: 'Darth'},
       {type: 'SET_RULES', choice: 'Starwars'},
       {type: 'PLAY', player1Choice: 'Lightsabre', player2Choice: 'Force Choke'},
-      {type: 'PLAY', player1Choice: 'Force Choke', player2Choice: 'Lightsabre'},
-      {type: 'PLAY', player1Choice: 'Ewok', player2Choice: 'Force Choke'},
     ]
 
     const finalState = actions.reduce(reducer, initialState);
@@ -93,13 +120,9 @@ describe('#reducer()', () => {
           Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
         }
       },
-      player1: {
-        name: 'Luke'
-      },
-      player2: {
-        name: 'Darth'
-      },
-      winner: 'player1'
+      rules: ['Lightsabre', 'Force Choke', 'Ewok'],
+      player1: { name: 'Luke' },
+      player2: { name: 'Darth', score: 1 }
     }))
   })
 
@@ -116,12 +139,8 @@ describe('#reducer()', () => {
           rules2: ['Lightsabre', 'Force Choke', 'Ewok']
         }
       },
-      player1: {
-        name: 'Ham'
-      },
-      player2: {
-        name: 'Chicken'
-      }
+      player1: { name: 'Ham' },
+      player2: { name: 'Chicken' }
     }))
   })
 })
