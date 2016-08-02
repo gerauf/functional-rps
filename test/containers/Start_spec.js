@@ -7,7 +7,8 @@ import {
   Simulate
 } from 'react-addons-test-utils';
 import {expect} from 'chai'
-import Start from '../../src/components/Start'
+import {Start} from '../../src/containers/Start'
+import {fromJS} from 'immutable'
 
 
 describe('Start', () => {
@@ -41,7 +42,9 @@ describe('Start', () => {
 
     it('renders rule options', () => {
       const player1 = 'Ehonda'
-      const availableRules = ['RPS', 'RPSLS']
+      const availableRules = fromJS({
+        names: ['RPS', 'RPSLS']
+      })
       const component = renderIntoDocument(
         <Start player1={player1}
                availableRules={availableRules}/>
@@ -61,7 +64,9 @@ describe('Start', () => {
       let rules;
       const setRules = (entry) => rules = entry
       const player1 = 'Ehonda'
-      const availableRules = ['RPS', 'RPSLS']
+      const availableRules = fromJS({
+        names: ['RPS', 'RPSLS']
+      })
 
       const component = renderIntoDocument(
         <Start player1={player1}

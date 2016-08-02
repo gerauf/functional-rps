@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {getWinner} from '../src/logic'
+import {getWinner} from '../lib/logic'
 
 describe('rps-logic', () => {
   describe('#getWinner()', () => {

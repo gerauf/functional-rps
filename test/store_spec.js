@@ -12,8 +12,8 @@ describe('store', () => {
       availableRules: {
         names: ['RPS', 'Starwars'],
         weapons: {
-          rules1: ['Rock', 'Paper', 'Scissor'],
-          rules2: ['Lightsabre', 'Force Choke', 'Ewok']
+          RPS: ['Rock', 'Paper', 'Scissor'],
+          Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
         }
       }
     }))
@@ -28,8 +28,8 @@ describe('store', () => {
       availableRules: {
         names: ['RPS', 'Starwars'],
         weapons: {
-          rules1: ['Rock', 'Paper', 'Scissor'],
-          rules2: ['Lightsabre', 'Force Choke', 'Ewok']
+          RPS: ['Rock', 'Paper', 'Scissor'],
+          Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
         }
       },
       player1: {

@@ -1,12 +1,12 @@
 import {List, fromJS} from 'immutable'
-import {getWinner} from './logic'
+import {getWinner} from '../lib/logic'
 
 export const INITIAL_STATE = fromJS({
   availableRules: {
     names: ['RPS', 'Starwars'],
     weapons: {
-      rules1: ['Rock', 'Paper', 'Scissor'],
-      rules2: ['Lightsabre', 'Force Choke', 'Ewok']
+      RPS: ['Rock', 'Paper', 'Scissor'],
+      Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
     }
   }
 })
@@ -31,11 +31,10 @@ export function play(state, player1Choice, player2Choice) {
 
   if(!winner) return state
 
-  state
-
   if(state.getIn([winner, 'score'],0) + 1 === 2){
     return state.updateIn([winner, 'score'], 0, score => score + 1)
-                .set('winner', winner)
+                .setIn(['winner','player'], winner)
+                .setIn(['winner','name'], state.getIn([winner, 'name']))
   } else {
     return state.updateIn([winner, 'score'], 0, score => score + 1)
   }

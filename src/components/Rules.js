@@ -3,7 +3,7 @@ import React from 'react'
 
 export default React.createClass({
   getRules: function() {
-    return this.props.availableRules || [];
+    return this.props.availableRules.get('names') || [];
   },
   render: function() {
     return(

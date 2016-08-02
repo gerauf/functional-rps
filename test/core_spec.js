@@ -127,7 +127,10 @@ describe('application logic', () => {
           name: 'Jon',
           score: 2
         },
-        winner: 'player1'
+        winner: {
+          player: 'player1',
+          name: 'Jon'
+        }
       }))
     })
   })
