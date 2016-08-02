@@ -1,9 +1,0 @@
-{
-  "availableRules": {
-    "names": ["RPS", "Starwars"],
-    "weapons": {
-      "RPS": ["Rock", "Paper", "Scissor"],
-      "Starwars": ["Lightsabre", "Force Choke", "Ewok"]
-    }
-  }
-}

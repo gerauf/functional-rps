@@ -19,7 +19,7 @@ describe('Start', () => {
     const button = findRenderedDOMComponentWithTag(component, 'button')
     const textbox = findRenderedDOMComponentWithTag(component, 'input')
 
-    expect(button.textContent).to.equal('submit');
+    expect(button.textContent).to.include('START');
     expect(textbox).to.be;
   })
 

@@ -29,26 +29,25 @@ describe('Winner component', () => {
       />
     )
 
-    const playAgain = findRenderedDOMComponentWithClass(component, 'playAgain')
-    const chooseRules = findRenderedDOMComponentWithClass(component, 'chooseRules')
+    const buttons = scryRenderedDOMComponentsWithTag(component, 'button')
 
-    expect(playAgain.textContent).to.equal("play again")
-    expect(chooseRules.textContent).to.equal("choose game type")
+    expect(buttons[0].textContent).to.equal("play again")
+    expect(buttons[1].textContent).to.equal("choose game type")
 
   })
 
   it('buttons have callbacks', () => {
     let playAgainCalled = false;
-    let chooseRulesCalled = false;
+    let changeRulesCalled = false;
     const playAgain = () => playAgainCalled = true;
-    const chooseRules = () => chooseRulesCalled = true;
+    const changeRules = () => changeRulesCalled = true;
     const winner = fromJS({ name: 'Yoda' })
 
     const component = renderIntoDocument(
       <Winner
         winner={winner}
         playAgain={playAgain}
-        chooseRules={chooseRules}
+        changeRules={changeRules}
       />
     )
 
@@ -57,6 +56,6 @@ describe('Winner component', () => {
     Simulate.click(buttons[1])
 
     expect(playAgainCalled).to.be.true
-    expect(chooseRulesCalled).to.be.true
+    expect(changeRulesCalled).to.be.true
   })
 })

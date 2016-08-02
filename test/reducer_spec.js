@@ -54,7 +54,8 @@ describe('#reducer()', () => {
 
     expect(nextState).to.equal(fromJS({
       rules: ['R', 'P', 'S'],
-      player2: { score: 1 }
+      player1: { choice: 'R' },
+      player2: { score: 1, choice: 'P' }
     }))
   })
 
@@ -94,35 +95,17 @@ describe('#reducer()', () => {
   })
 
   it('can be used with reduce', () => {
-    const initialState = fromJS({
-      availableRules: {
-        names: ['RPS', 'Starwars'],
-        weapons: {
-          RPS: ['Rock', 'Paper', 'Scissor'],
-          Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
-        }
-      }
-    })
+    const initialState = fromJS({})
 
     const actions = [
       {type: 'SET_NAMES', player1: 'Luke', player2: 'Darth'},
-      {type: 'SET_RULES', choice: 'Starwars'},
-      {type: 'PLAY', player1Choice: 'Lightsabre', player2Choice: 'Force Choke'},
     ]
 
     const finalState = actions.reduce(reducer, initialState);
 
     expect(finalState).to.equal(fromJS({
-      availableRules: {
-        names: ['RPS', 'Starwars'],
-        weapons: {
-          RPS: ['Rock', 'Paper', 'Scissor'],
-          Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
-        }
-      },
-      rules: ['Lightsabre', 'Force Choke', 'Ewok'],
       player1: { name: 'Luke' },
-      player2: { name: 'Darth', score: 1 }
+      player2: { name: 'Darth' }
     }))
   })
 
@@ -133,9 +116,10 @@ describe('#reducer()', () => {
 
     expect(nextState).to.equal(fromJS({
       availableRules: {
-        names: ['RPS', 'Starwars'],
+        names: ['RPS', 'Spock', 'Starwars'],
         weapons: {
           RPS: ['Rock', 'Paper', 'Scissor'],
+          Spock: ['Rock', 'Paper', 'Scissor', 'Lizard', 'Spock'],
           Starwars: ['Lightsabre', 'Force Choke', 'Ewok']
         }
       },

@@ -10,19 +10,21 @@ export default React.createClass({
   },
   render: function() {
     return(
-      <div className='name'>
-          <h1> START </h1>
-
+      <div className='name.container'>
+        <div className='name'>
           <input type='text'
           ref= 'nameInput'
           placeholder="enter name"
           onChange={this.handleTextChange}/>
 
-          <button onClick={() => this.props.setName(this.state.nameEntry)}>
-          submit
+          <h1> Welcome {this.state.nameEntry || '...'} </h1>
+
+          <button className='start-button'
+            onClick={() => this.props.setName(this.state.nameEntry)}>
+          <p>START</p><p>►</p>
           </button>
 
-          <h1> Welcome {this.state.nameEntry || '...'} </h1>
+        </div>
       </div>
     )
   }

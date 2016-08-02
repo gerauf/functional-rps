@@ -9,9 +9,9 @@ export default React.createClass({
   },
   render: function() {
     return(
-      <div className={this.props.class}>
-        <h4 className="player-name"> Player name: {this.getPlayer()} </h4>
-        <h6 className="player-score"> Player score: {this.getScore()} </h6>
+      <div className="player">
+        <h4 className="player-name"> Name: <span>{this.getPlayer()}</span> </h4>
+        <h5 className="player-score"> Score: <span>{this.getScore()}</span>  </h5>
       </div>
     )
   }

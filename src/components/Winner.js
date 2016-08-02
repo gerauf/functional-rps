@@ -6,16 +6,16 @@ export default React.createClass({
   },
   render: function() {
     return(
-      <div>
+      <div className="winner-modal">
         <h1 className="winner-msg">{this.props.winner.get('name')} wins</h1>
 
-        <button className="playAgain"
+        <button className="reset-buttons"
                 onClick={() => this.props.playAgain()}>
           play again
         </button>
 
-        <button className="chooseRules"
-                onClick={() => this.props.chooseRules()}>
+        <button className="reset-buttons"
+                onClick={() => this.props.changeRules()}>
           choose game type
         </button>
 

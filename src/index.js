@@ -5,6 +5,8 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './reducer';
 
+require('./style.css');
+
 const store = createStore(reducer);
 window.store = store
 

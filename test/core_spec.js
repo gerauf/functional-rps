@@ -71,7 +71,7 @@ describe('application logic', () => {
   })
 
   describe('#play()', () => {
-    it('increases the score for winning choice', () => {
+    it('saves choice to state and increases the winners score by one', () => {
       const state = fromJS({
         rules: ['rock', 'paper', 'scissor']
       })
@@ -83,7 +83,11 @@ describe('application logic', () => {
       expect(nextState).to.equal(fromJS({
         rules: ['rock', 'paper', 'scissor'],
         player2: {
+          choice: 'rock',
           score: 1
+        },
+        player1: {
+          choice: 'scissor'
         }
       }))
     })
@@ -103,7 +107,11 @@ describe('application logic', () => {
       expect(nextState).to.equal(fromJS({
         rules: ['rock', 'paper', 'scissor'],
         player2: {
+          choice: 'rock',
           score: 1
+        },
+        player1: {
+          choice: 'rock'
         }
       }))
     })
@@ -124,11 +132,14 @@ describe('application logic', () => {
       expect(nextState).to.equal(fromJS({
         rules: ['rock', 'paper', 'scissor'],
         player1: {
+          choice: 'paper',
           name: 'Jon',
           score: 2
         },
+        player2: {
+          choice: 'rock'
+        },
         winner: {
-          player: 'player1',
           name: 'Jon'
         }
       }))

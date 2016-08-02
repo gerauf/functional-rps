@@ -25,7 +25,7 @@ describe('Game container integration', () => {
               player2={player2}
               winner={winner}/>
       )
-      const weapons = scryRenderedDOMComponentsWithClass(component, 'weapon')
+      const weapons = scryRenderedDOMComponentsWithClass(component, 'weapon-button')
 
       expect(weapons[0].hasAttribute('disabled')).to.be.true
       expect(weapons[1].hasAttribute('disabled')).to.be.true

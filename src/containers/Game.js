@@ -13,16 +13,18 @@ export const Game = React.createClass({
       <div>
         {this.props.rules ?
           (<div>
-            <Player class={'player1'} player={this.props.player1}/>
-            <Player class={'player2'} player={this.props.player2}/>
-            <Arena player1={this.props.player1}
-                   player2={this.props.player2}
-                   />
-            <Weapons rules={this.props.rules}
+            <section className="game-container">
+              <Player class={'player1'} player={this.props.player1}/>
+              <Arena player1={this.props.player1}
+              player2={this.props.player2}/>
+              <Player class={'player2'} player={this.props.player2}/>
+            </section>
+            <Weapons  rules={this.props.rules}
                      play={this.props.play}
-                     winner={this.props.winner}
-                     />
-            {this.props.winner ? <Winner winner={this.props.winner}/> : ""}
+                     winner={this.props.winner}/>
+            {this.props.winner ? <Winner playAgain={this.props.playAgain}
+                                         changeRules={this.props.changeRules}
+                                         winner={this.props.winner}/> : ""}
           </div>)
           :
           <StartContainer/>}
