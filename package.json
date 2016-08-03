@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node_modules/mocha/bin/mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive",
     "test:watch": "npm run test -- --watch",
-    "start": "babel-node index.js"
+    "start": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
