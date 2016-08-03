@@ -1,10 +1,7 @@
 import React from 'react'
 
-export default React.createClass({
-  winnerName: function() {
-
-  },
-  render: function() {
+export default class extends React.Component{
+  render(){
     return(
       <div className="winner-modal">
         <h1 className="winner-msg">{this.props.winner.get('name')} wins</h1>
@@ -22,4 +19,4 @@ export default React.createClass({
       </div>
     )
   }
-})
+}

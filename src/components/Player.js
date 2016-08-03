@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-export default React.createClass({
-  getScore: function() {
+export default class extends React.Component{
+  getScore() {
     return this.props.player.get('score') || 0
-  },
-  getPlayer: function() {
+  }
+  getPlayer() {
     return this.props.player.get('name') || ''
-  },
-  render: function() {
+  }
+  render() {
     return(
       <div className="player">
         <h4 className="player-name"> Name: <span>{this.getPlayer()}</span> </h4>
@@ -15,4 +15,4 @@ export default React.createClass({
       </div>
     )
   }
-})
+}

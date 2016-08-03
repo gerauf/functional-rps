@@ -23,11 +23,11 @@ export function play(player1Choice, player2Choice) {
 export function playAgain() {
   return {
     type: 'PLAY_AGAIN'
-  }
+  };
 }
 
 export function changeRules() {
   return {
     type: 'CHANGE_RULES'
-  }
+  };
 }

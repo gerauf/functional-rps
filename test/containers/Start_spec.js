@@ -38,6 +38,20 @@ describe('Start', () => {
     expect(player1).to.equal('Ryu');
   })
 
+  it('a player must enter a name to invoke the callback',() => {
+    let player1;
+    const setName = (entry) => player1 = entry
+    const component = renderIntoDocument(
+      <Start setName={setName}/>
+    );
+    const submitName = findRenderedDOMComponentWithTag(component, 'button')
+    const textbox = findRenderedDOMComponentWithTag(component, 'input')
+
+    Simulate.click(submitName)
+
+    expect(player1).to.equal(undefined);
+  })
+
   context('when a player has submitted a name', () => {
 
     it('renders rule options', () => {

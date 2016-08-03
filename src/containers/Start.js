@@ -1,11 +1,11 @@
-import React from 'react'
-import Name from '../components/Name'
-import Rules from '../components/Rules'
+import React from 'react';
+import Name from '../components/Name';
+import Rules from '../components/Rules';
 import {connect} from 'react-redux';
-import * as actionCreators from '../action_creators'
+import * as actionCreators from '../action_creators';
 
-export const Start = React.createClass({
-  render: function() {
+export class Start extends React.Component{
+  render() {
     return(
       <div>
         {this.props.player1 ?
@@ -14,7 +14,7 @@ export const Start = React.createClass({
       </div>
     )
   }
-})
+}
 
 function mapStateToProps(state) {
   return {

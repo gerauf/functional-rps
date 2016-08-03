@@ -21,13 +21,12 @@ span {
 }
 
 button {
-  color: white;
   text-shadow: black 0.1em 0.1em 0.2em;
   flex: auto;
   font-size: 14px;
   opacity: 0.60;
-  border: solid 3px transparent;
-  border-radius: 10%;
+  border: solid 3px grey;
+  border-radius: 20px;
 }
 
 button:hover{
@@ -84,10 +83,16 @@ input, .start-button{
 }
 
 .start-button {
+  color: #818583;
   font-size: 27px;
   background-color: transparent;
   text-shadow: black 0.1em 0.1em 0.2em;
   border: none
+}
+
+.start-button:focus{
+  border: solid 3px transparent;
+  outline: transparent;
 }
 
 .rules-button {
@@ -127,9 +132,11 @@ input, .start-button{
   width: 24%;
   height: 30%;
   padding: 5px;
+  min-height: 220px;
 }
 
 .reset-buttons{
+  min-height: 45px;
   border-radius: 0%;
   margin-bottom: 2px;
 }

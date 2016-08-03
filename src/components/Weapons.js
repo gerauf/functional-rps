@@ -1,17 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-export default React.createClass({
-  getWeapons: function() {
+export default class extends React.Component{
+  getWeapons() {
     return this.props.rules || [];
-  },
-  computerChoice: function() {
-    let rules = this.getWeapons()
+  }
+  computerChoice() {
+    let rules = this.getWeapons();
     return rules.get(Math.floor(Math.random() * rules.size));
-  },
-  isDisabled: function() {
-    return !!this.props.winner
-  },
-  render: function() {
+  }
+  isDisabled() {
+    return !!this.props.winner;
+  }
+  render() {
     return(
       <div className='weapons'>
           <h1> Pick your weapon </h1>
@@ -29,4 +29,4 @@ export default React.createClass({
       </div>
     )
   }
-})
+}

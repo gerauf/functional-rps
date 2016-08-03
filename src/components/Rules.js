@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 
-export default React.createClass({
-  getRules: function() {
+export default class extends React.Component{
+  getRules(){
     return this.props.availableRules.get('names') || [];
-  },
-  render: function() {
+  }
+  render(){
     return(
       <div className='rules'>
         <h1> Choose your weapons </h1>
@@ -21,4 +21,4 @@ export default React.createClass({
       </div>
     )
   }
-})
+}

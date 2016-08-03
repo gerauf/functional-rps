@@ -1,5 +1,5 @@
-import {List, fromJS} from 'immutable'
-import {getWinner} from '../lib/logic'
+import {List, fromJS} from 'immutable';
+import {getWinner} from '../lib/logic';
 
 export const INITIAL_STATE = fromJS({
   availableRules: {
