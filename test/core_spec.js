@@ -38,7 +38,6 @@ describe('application logic', () => {
           name: 'Computer'
         }
       }))
-
     })
   });
 

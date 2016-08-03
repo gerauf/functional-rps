@@ -9,24 +9,33 @@ import * as actionCreators from '../action_creators';
 
 
 export class Game extends React.Component{
+  whenWinner(){
+    return this.props.winner ?
+      <Winner playAgain={this.props.playAgain}
+              changeRules={this.props.changeRules}
+              winner={this.props.winner}/> :
+      null
+  }
   render(){
     return(
       <div>
         {this.props.rules ?
-          (<div>
+          <div>
             <section className="game-container">
               <Player player={this.props.player1}/>
+
               <Arena player1={this.props.player1}
                      player2={this.props.player2}/>
+
               <Player player={this.props.player2}/>
             </section>
+
+            {this.whenWinner()}
+
             <Weapons rules={this.props.rules}
                      play={this.props.play}
                      winner={this.props.winner}/>
-            {this.props.winner ? <Winner playAgain={this.props.playAgain}
-                                         changeRules={this.props.changeRules}
-                                         winner={this.props.winner}/> : ""}
-          </div>)
+          </div>
           :
           <StartContainer/>}
       </div>
