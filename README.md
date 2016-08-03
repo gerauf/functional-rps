@@ -20,3 +20,11 @@ To run the tests type the following into your terminal
 ```
 npm run test
 ```
+
+The game is implemented with three rule sets - standard RPS, Spock and a homemade option called starwars. Due to the way the game is constructed add new rule sets would be very straightforward, simply updating the initial state the redux store starts with would be enough.
+
+Future updates would include:
+- icons for each option - an additional branch in the state tree would be needed to accommodate this but it would be fairly straight forward to implement.
+- animations, as this would be a side-effect I would look to use thunk or saga to manage this (which would require learning them first!)
+- build your own rule set, user could input names and images and create custom rules
+- sync with local storage
