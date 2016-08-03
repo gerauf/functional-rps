@@ -24,9 +24,7 @@ export default class extends React.Component{
     return(
       <div className='weapons'>
           <h1> Pick your weapon </h1>
-          <div className='weapon-buttons-container'>
-            {weapons}
-          </div>
+          <div className='weapon-buttons-container'>{weapons}</div>
       </div>
     )
   }

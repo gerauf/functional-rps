@@ -27,6 +27,7 @@ export function setRules(state, choice) {
   return state.set('rules', rules)
 }
 
+
 export function play(state, player1Choice, player2Choice) {
   const winner = getWinner(state.get('rules'), player1Choice, player2Choice)
 
@@ -45,6 +46,7 @@ export function play(state, player1Choice, player2Choice) {
                 .setIn(['player2', 'choice'], player2Choice)
   }
 }
+
 
 export function playAgain(state) {
   return state.removeIn(['player1', 'score'],'score')

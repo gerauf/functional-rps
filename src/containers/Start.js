@@ -9,8 +9,9 @@ export class Start extends React.Component{
     return(
       <div>
         {this.props.player1 ?
-          <Rules {...this.props} /> :
-          <Name  {...this.props} />}
+          <Rules availableRules={this.props.availableRules}
+                 setRules={this.props.setRules}/> :
+          <Name  setName={this.props.setName} />}
       </div>
     )
   }
@@ -19,9 +20,7 @@ export class Start extends React.Component{
 function mapStateToProps(state) {
   return {
     availableRules: state.get('availableRules'),
-    rules: state.get('rules'),
-    player1: state.get('player1'),
-    player2: state.get('player2')
+    player1: state.get('player1')
   };
 }
 

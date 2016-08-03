@@ -6,11 +6,13 @@ import * as actionCreators from '../action_creators';
 
 
 export class App extends React.Component{
+
   render(){
+
     return(
       <div>
         {this.props.rules ? <GameContainer/> : <StartContainer/>}
-      </div>
+      </div> //App essentially chooses which screen to display, could have a state which has a screen and an index
     )
   }
 }

@@ -16,7 +16,7 @@ export function play(player1Choice, player2Choice) {
   return {
     type: 'PLAY',
     player1Choice,
-    player2Choice
+    player2Choice  //could move computer random choice into here
   };
 }
 
