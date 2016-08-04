@@ -49,7 +49,7 @@ describe('Start', () => {
 
     Simulate.click(submitName)
 
-    expect(player1).to.equal(undefined);
+    expect(player1).to.be.undefined;
   })
 
   context('when a player has submitted a name', () => {
@@ -63,7 +63,6 @@ describe('Start', () => {
         <Start player1={player1}
                availableRules={availableRules}/>
       );
-
       const buttons = scryRenderedDOMComponentsWithTag(component, 'button')
 
 
@@ -81,13 +80,11 @@ describe('Start', () => {
       const availableRules = fromJS({
         names: ['RPS', 'RPSLS']
       })
-
       const component = renderIntoDocument(
         <Start player1={player1}
                availableRules={availableRules}
                setRules={setRules}/>
       );
-
       const buttons =  scryRenderedDOMComponentsWithTag(component, 'button')
 
       Simulate.click(buttons[0])

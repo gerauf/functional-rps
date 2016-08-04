@@ -12,7 +12,7 @@ export class App extends React.Component{
     return(
       <div>
         {this.props.rules ? <GameContainer/> : <StartContainer/>}
-      </div> //App essentially chooses which screen to display, could have a state which has a screen and an index
+      </div> 
     )
   }
 }

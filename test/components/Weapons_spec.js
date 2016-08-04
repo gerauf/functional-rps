@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {
   renderIntoDocument,
-  scryRenderedDOMComponentsWithTag,
+  scryRenderedDOMComponentsWithClass,
   Simulate
 } from 'react-addons-test-utils';
 import {fromJS} from 'immutable'
@@ -16,7 +16,7 @@ describe('Weapons component', () => {
       <Weapons rules={rules}/>
     );
 
-    const weapons = scryRenderedDOMComponentsWithTag(component, 'button')
+    const weapons = scryRenderedDOMComponentsWithClass(component, 'weapon-button')
 
     expect(weapons[0].textContent).to.include('Rock')
     expect(weapons[1].textContent).to.include('Paper')
@@ -33,11 +33,27 @@ describe('Weapons component', () => {
                play={play}
       />
     );
-    const weapons = scryRenderedDOMComponentsWithTag(component, 'button')
+    const weapons = scryRenderedDOMComponentsWithClass(component, 'weapon-button')
 
     Simulate.click(weapons[0])
 
     expect(playerChoice).to.equal(rules.get(0))
     expect(rules).to.include(computerChoice)
+  })
+
+  context('when there is a winner', () => {
+    it('the weapon buttons are disabled', () => {
+      const rules = ['Rock', 'Paper', 'Scissors']
+      const winner = fromJS({ name: 'Yoda' })
+      const component = renderIntoDocument(
+        <Weapons rules={rules}
+                 winner={winner}/>
+      )
+      const weapons = scryRenderedDOMComponentsWithClass(component, 'weapon-button')
+
+      expect(weapons[0].hasAttribute('disabled')).to.be.true
+      expect(weapons[1].hasAttribute('disabled')).to.be.true
+      expect(weapons[2].hasAttribute('disabled')).to.be.true
+    })
   })
 })
